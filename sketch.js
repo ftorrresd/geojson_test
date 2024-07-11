@@ -19856,13 +19856,13 @@ function preload() {
 function setup() {
   const scale = 2;
   createCanvas(scale*800, scale*600);
+  // createCanvas(16384 , 16384);
   noLoop(); // No need to loop since we are only drawing static data
 }
 
 function draw() {
   background(255);
   
-  console.log(loadJSON('https://cernbox.cern.ch/remote.php/dav/public-files/mvilDxzTWjIsKUL/dt.json'));
 
   if (geoData) {
     // Loop through each feature in the GeoJSON data
@@ -19885,9 +19885,8 @@ function draw() {
 function drawPolygon(coordinates) {
   beginShape();
   for (let coord of coordinates[0]) {
-    let x = map(coord[0], -180, 180, 0, width);
-    let y = map(coord[1], 90, -90, 0, height);
-    vertex(x, y);
+	  console.log(width)
+    vertex(coord[0], coord[1]);
   }
   endShape(CLOSE);
 }
